@@ -18,7 +18,13 @@ for(const file of files) {
 }
 
 function getBase64Hash(content) {
+    const hash = crypto.createHash('sha256')
+
+    hash.update(content)
+
+    return hash.digest('base64')
 }
 
 function getFileContent(filepath) {
+    return fs.readFileSync(__dirname+"/"+filepath)
 }
